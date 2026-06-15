@@ -30,11 +30,10 @@
       <p class="hero-tag">📍 Now accepting online orders</p>
       <h1>Pizza that hits different.</h1>
       <p class="hero-sub">14" handcrafted pizzas, cheesy starters, and refreshing drinks. Fresh every order.</p>
-      <a href="#order" class="btn-primary">Order via WhatsApp</a>
-      <a href="#menu" class="btn-ghost">See the Menu</a>
+      <a href="#menu" class="btn-primary">See the Menu</a>
+      <a href="#order" class="btn-ghost">Order via WhatsApp</a>
     </div>
     <div class="hero-img">
-      <!-- Replace src with your actual hero photo -->
       <img src="images/hero.jpg" alt="Chomp Pizza" onerror="this.outerHTML='<div class=\'hero-placeholder\'>🍕</div>'" />
     </div>
   </section>
@@ -51,51 +50,38 @@
           <span class="size-badge">14"</span>
         </div>
         <div class="cards">
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/four-cheese-spinach.jpg" alt="Four Cheese Spinach" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Four Cheese Spinach" data-price="345">
+            <div class="card-img"><img src="images/menu/four-cheese-spinach.jpg" alt="Four Cheese Spinach" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Four Cheese Spinach</h4>
               <p>A bold blend of four melted cheeses with fresh spinach on a golden crust.</p>
-              <span class="price">₱345</span>
+              <div class="card-footer"><span class="price">₱345</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/manhattan.jpg" alt="Manhattan" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Manhattan" data-price="345">
+            <div class="card-img"><img src="images/menu/manhattan.jpg" alt="Manhattan" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Manhattan</h4>
               <p>Rich, savory toppings inspired by classic New York-style flavors.</p>
-              <span class="price">₱345</span>
+              <div class="card-footer"><span class="price">₱345</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/cheesy-bacon-jalapeno.jpg" alt="Cheesy Bacon Jalapeño" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Cheesy Bacon Jalapeño" data-price="345">
+            <div class="card-img"><img src="images/menu/cheesy-bacon-jalapeno.jpg" alt="Cheesy Bacon Jalapeño" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Cheesy Bacon Jalapeño</h4>
               <p>Crispy bacon and spicy jalapeño slices smothered in gooey melted cheese.</p>
-              <span class="price">₱345</span>
+              <div class="card-footer"><span class="price">₱345</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/philly-cheesesteak.jpg" alt="Philly Cheesesteak" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Philly Cheesesteak" data-price="385">
+            <div class="card-img"><img src="images/menu/philly-cheesesteak.jpg" alt="Philly Cheesesteak" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Philly Cheesesteak</h4>
               <p>Tender steak strips, sautéed onions, and peppers on a cheesy pizza base.</p>
-              <span class="price">₱385</span>
+              <div class="card-footer"><span class="price">₱385</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -106,51 +92,38 @@
           <span class="size-badge">14"</span>
         </div>
         <div class="cards">
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/hawaiian.jpg" alt="Hawaiian" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Hawaiian" data-price="285">
+            <div class="card-img"><img src="images/menu/hawaiian.jpg" alt="Hawaiian" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Hawaiian</h4>
               <p>Sweet pineapple and savory ham — the classic combo everyone loves.</p>
-              <span class="price">₱285</span>
+              <div class="card-footer"><span class="price">₱285</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/three-cheese.jpg" alt="Three Cheese" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Three Cheese" data-price="285">
+            <div class="card-img"><img src="images/menu/three-cheese.jpg" alt="Three Cheese" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Three Cheese</h4>
               <p>Triple the cheese, triple the goodness. Simple, rich, and satisfying.</p>
-              <span class="price">₱285</span>
+              <div class="card-footer"><span class="price">₱285</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/margherita.jpg" alt="Margherita" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Margherita" data-price="285">
+            <div class="card-img"><img src="images/menu/margherita.jpg" alt="Margherita" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Margherita</h4>
               <p>Fresh tomato sauce, mozzarella, and basil. A timeless Italian classic.</p>
-              <span class="price">₱285</span>
+              <div class="card-footer"><span class="price">₱285</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/pepperoni.jpg" alt="Pepperoni" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" />
-            </div>
+          <div class="card" data-name="Pepperoni" data-price="345">
+            <div class="card-img"><img src="images/menu/pepperoni.jpg" alt="Pepperoni" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍕</div>'" /></div>
             <div class="card-body">
               <h4>Pepperoni</h4>
               <p>Loaded with crispy pepperoni slices on a bed of melted mozzarella.</p>
-              <span class="price">₱345</span>
+              <div class="card-footer"><span class="price">₱345</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -160,113 +133,87 @@
           <h3>🍟 Starters</h3>
         </div>
         <div class="cards">
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/spaghetti.jpg" alt="Mom's Spaghetti" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍝</div>'" />
-            </div>
+          <div class="card" data-name="Mom's Spaghetti" data-price="90">
+            <div class="card-img"><img src="images/menu/spaghetti.jpg" alt="Mom's Spaghetti" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍝</div>'" /></div>
             <div class="card-body">
               <h4>Mom's Spaghetti</h4>
               <p>Homestyle spaghetti in a rich, sweet-savory meat sauce.</p>
-              <span class="price">₱90</span>
+              <div class="card-footer"><span class="price">₱90</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/beef-quesadilla.jpg" alt="Beef Quesadilla" onerror="this.outerHTML='<div class=\'img-placeholder\'>🌮</div>'" />
-            </div>
+          <div class="card" data-name="Beef Quesadilla" data-price="220">
+            <div class="card-img"><img src="images/menu/beef-quesadilla.jpg" alt="Beef Quesadilla" onerror="this.outerHTML='<div class=\'img-placeholder\'>🌮</div>'" /></div>
             <div class="card-body">
               <h4>Beef Quesadilla</h4>
               <p>Seasoned beef and melted cheese folded in a crispy toasted tortilla.</p>
-              <span class="price">₱220</span>
+              <div class="card-footer"><span class="price">₱220</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/cheese-quesadilla.jpg" alt="Cheese Quesadilla" onerror="this.outerHTML='<div class=\'img-placeholder\'>🧀</div>'" />
-            </div>
+          <div class="card" data-name="Cheese Quesadilla" data-price="150">
+            <div class="card-img"><img src="images/menu/cheese-quesadilla.jpg" alt="Cheese Quesadilla" onerror="this.outerHTML='<div class=\'img-placeholder\'>🧀</div>'" /></div>
             <div class="card-body">
               <h4>Cheese Quesadilla</h4>
               <p>Gooey melted cheese stuffed inside a golden, crispy tortilla.</p>
-              <span class="price">₱150</span>
+              <div class="card-footer"><span class="price">₱150</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/chicken-shots.jpg" alt="Chicken Shots" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍗</div>'" />
-            </div>
+          <div class="card" data-name="Chicken Shots" data-price="120">
+            <div class="card-img"><img src="images/menu/chicken-shots.jpg" alt="Chicken Shots" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍗</div>'" /></div>
             <div class="card-body">
               <h4>Chicken Shots</h4>
               <p>Juicy bite-sized chicken pieces, perfectly seasoned and fried to a crisp.</p>
-              <span class="price">₱120</span>
+              <div class="card-footer"><span class="price">₱120</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-img">
-              <img src="images/menu/french-fries.jpg" alt="French Fries" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍟</div>'" />
-            </div>
+          <div class="card" data-name="French Fries" data-price="90">
+            <div class="card-img"><img src="images/menu/french-fries.jpg" alt="French Fries" onerror="this.outerHTML='<div class=\'img-placeholder\'>🍟</div>'" /></div>
             <div class="card-body">
               <h4>French Fries</h4>
               <p>Golden crispy fries — the perfect sidekick to any order.</p>
-              <span class="price">₱90</span>
+              <div class="card-footer"><span class="price">₱90</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
-          <div class="card featured">
-            <div class="card-img">
-              <img src="images/menu/mamas-box.jpg" alt="Mama's Box" onerror="this.outerHTML='<div class=\'img-placeholder\'>📦</div>'" />
-            </div>
+          <div class="card featured" data-name="Mama's Box" data-price="320">
+            <div class="card-img"><img src="images/menu/mamas-box.jpg" alt="Mama's Box" onerror="this.outerHTML='<div class=\'img-placeholder\'>📦</div>'" /></div>
             <div class="card-body">
               <h4>Mama's Box <span class="tag-best">Best Value</span></h4>
               <p>Quesadilla + French Fries + Chicken Shots. The ultimate sharing combo.</p>
-              <span class="price">₱320</span>
+              <div class="card-footer"><span class="price">₱320</span><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
             </div>
           </div>
-
         </div>
       </div>
 
       <!-- ADD-ONS -->
       <div class="category">
-        <div class="category-header">
-          <h3>➕ Add-ons</h3>
-        </div>
+        <div class="category-header"><h3>➕ Add-ons</h3></div>
         <div class="addons-grid">
-          <div class="addon"><span>Cheese</span><span>₱65</span></div>
-          <div class="addon"><span>Ham</span><span>₱65</span></div>
-          <div class="addon"><span>Bacon</span><span>₱65</span></div>
-          <div class="addon"><span>Pepperoni</span><span>₱65</span></div>
-          <div class="addon"><span>Italian Sausage</span><span>₱65</span></div>
-          <div class="addon"><span>Pineapple</span><span>₱20</span></div>
-          <div class="addon"><span>Parmesan</span><span>₱20</span></div>
+          <div class="addon" data-name="Add-on: Cheese" data-price="65"><span>Cheese</span><span class="addon-price">₱65</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
+          <div class="addon" data-name="Add-on: Ham" data-price="65"><span>Ham</span><span class="addon-price">₱65</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
+          <div class="addon" data-name="Add-on: Bacon" data-price="65"><span>Bacon</span><span class="addon-price">₱65</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
+          <div class="addon" data-name="Add-on: Pepperoni" data-price="65"><span>Pepperoni</span><span class="addon-price">₱65</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
+          <div class="addon" data-name="Add-on: Italian Sausage" data-price="65"><span>Italian Sausage</span><span class="addon-price">₱65</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
+          <div class="addon" data-name="Add-on: Pineapple" data-price="20"><span>Pineapple</span><span class="addon-price">₱20</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
+          <div class="addon" data-name="Add-on: Parmesan" data-price="20"><span>Parmesan</span><span class="addon-price">₱20</span><button class="btn-add-sm" onclick="addAddonToCart(this)">+</button></div>
         </div>
       </div>
 
       <!-- DRINKS & SAUCES -->
       <div class="two-col">
         <div class="category">
-          <div class="category-header">
-            <h3>🥤 Drinks</h3>
-          </div>
+          <div class="category-header"><h3>🥤 Drinks</h3></div>
           <div class="list-items">
-            <div class="list-item"><span>Soft Drinks</span><span>₱25</span></div>
-            <div class="list-item"><span>Cucumber Lemonade</span><span>₱50</span></div>
-            <div class="list-item"><span>Lychee Lemonade</span><span>₱50</span></div>
-            <div class="list-item"><span>Blue Lemonade</span><span>₱50</span></div>
+            <div class="list-item" data-name="Soft Drinks" data-price="25"><span>Soft Drinks</span><div class="list-right"><span>₱25</span><button class="btn-add-sm" onclick="addListToCart(this)">+</button></div></div>
+            <div class="list-item" data-name="Cucumber Lemonade" data-price="50"><span>Cucumber Lemonade</span><div class="list-right"><span>₱50</span><button class="btn-add-sm" onclick="addListToCart(this)">+</button></div></div>
+            <div class="list-item" data-name="Lychee Lemonade" data-price="50"><span>Lychee Lemonade</span><div class="list-right"><span>₱50</span><button class="btn-add-sm" onclick="addListToCart(this)">+</button></div></div>
+            <div class="list-item" data-name="Blue Lemonade" data-price="50"><span>Blue Lemonade</span><div class="list-right"><span>₱50</span><button class="btn-add-sm" onclick="addListToCart(this)">+</button></div></div>
           </div>
         </div>
-
         <div class="category">
-          <div class="category-header">
-            <h3>🥣 Sauces</h3>
-          </div>
+          <div class="category-header"><h3>🥣 Sauces</h3></div>
           <div class="list-items">
-            <div class="list-item"><span>White Sauce</span><span>₱20</span></div>
-            <div class="list-item"><span>Cheese Sauce</span><span>₱20</span></div>
+            <div class="list-item" data-name="White Sauce" data-price="20"><span>White Sauce</span><div class="list-right"><span>₱20</span><button class="btn-add-sm" onclick="addListToCart(this)">+</button></div></div>
+            <div class="list-item" data-name="Cheese Sauce" data-price="20"><span>Cheese Sauce</span><div class="list-right"><span>₱20</span><button class="btn-add-sm" onclick="addListToCart(this)">+</button></div></div>
           </div>
         </div>
       </div>
@@ -278,16 +225,12 @@
   <section class="order-section" id="order">
     <div class="container order-inner">
       <h2>Ready to order?</h2>
-      <p>Send us a message on WhatsApp and we'll get your order going right away.</p>
-      <a
-        href="https://wa.me/639626922373?text=Hi%20Chomp%20Pizza!%20I'd%20like%20to%20place%20an%20order%20%F0%9F%8D%95"
-        target="_blank"
-        class="btn-whatsapp"
-      >
-        <svg viewBox="0 0 32 32" fill="currentColor" width="24" height="24"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.738 5.476 2.027 7.776L0 32l8.469-2.001A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 0 1-6.771-1.848l-.485-.289-5.027 1.188 1.212-4.908-.317-.503A13.27 13.27 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.846c-.398-.199-2.355-1.162-2.72-1.295-.365-.133-.631-.199-.897.199-.266.398-1.031 1.295-1.264 1.561-.232.266-.465.299-.863.1-.398-.199-1.682-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.175-.811.18-.179.398-.465.598-.698.199-.232.265-.398.398-.664.133-.266.066-.498-.033-.698-.1-.199-.897-2.162-1.229-2.96-.324-.777-.653-.672-.897-.684-.232-.012-.498-.015-.764-.015-.266 0-.698.1-1.063.498-.365.398-1.396 1.364-1.396 3.326s1.43 3.858 1.629 4.124c.199.266 2.814 4.298 6.818 6.028.953.411 1.696.657 2.276.841.956.305 1.826.262 2.514.159.767-.114 2.355-.963 2.688-1.893.332-.93.332-1.728.232-1.893-.099-.166-.365-.265-.763-.465z"/></svg>
-        Order on WhatsApp
+      <p>Add items to your cart and send us your order directly on WhatsApp.</p>
+      <a href="https://wa.me/639626922373?text=Hi%20Chomp%20Pizza!%20I'd%20like%20to%20place%20an%20order%20%F0%9F%8D%95" target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 32 32" fill="currentColor" width="22" height="22"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.738 5.476 2.027 7.776L0 32l8.469-2.001A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 0 1-6.771-1.848l-.485-.289-5.027 1.188 1.212-4.908-.317-.503A13.27 13.27 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.846c-.398-.199-2.355-1.162-2.72-1.295-.365-.133-.631-.199-.897.199-.266.398-1.031 1.295-1.264 1.561-.232.266-.465.299-.863.1-.398-.199-1.682-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.175-.811.18-.179.398-.465.598-.698.199-.232.265-.398.398-.664.133-.266.066-.498-.033-.698-.1-.199-.897-2.162-1.229-2.96-.324-.777-.653-.672-.897-.684-.232-.012-.498-.015-.764-.015-.266 0-.698.1-1.063.498-.365.398-1.396 1.364-1.396 3.326s1.43 3.858 1.629 4.124c.199.266 2.814 4.298 6.818 6.028.953.411 1.696.657 2.276.841.956.305 1.826.262 2.514.159.767-.114 2.355-.963 2.688-1.893.332-.93.332-1.728.232-1.893-.099-.166-.365-.265-.763-.465z"/></svg>
+        Chat with us on WhatsApp
       </a>
-      <p class="contact-note">Or call us at <strong>0962 692 2373</strong> · Follow us on Facebook <strong>Chomp Pizza</strong></p>
+      <p class="contact-note">Call us at <strong>0962 692 2373</strong> · Follow us on Facebook <strong>Chomp Pizza</strong></p>
     </div>
   </section>
 
@@ -295,6 +238,42 @@
   <footer class="footer">
     <p>© 2025 Chomp Pizza · All rights reserved</p>
   </footer>
+
+  <!-- FLOATING CART BUTTON -->
+  <button class="cart-fab" id="cartFab" onclick="toggleCart()" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="24" height="24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <span>🛒</span>
+        <p>Your cart is empty.<br/>Add items from the menu!</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-note-wrap">
+        <label for="cartNote">Special instructions (optional)</label>
+        <textarea id="cartNote" placeholder="e.g. extra spicy, no onions, delivery to Brgy. San Jose..."></textarea>
+      </div>
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₱0</span>
+      </div>
+      <button class="btn-send-order" onclick="sendOrder()">
+        <svg viewBox="0 0 32 32" fill="currentColor" width="20" height="20"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.738 5.476 2.027 7.776L0 32l8.469-2.001A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 0 1-6.771-1.848l-.485-.289-5.027 1.188 1.212-4.908-.317-.503A13.27 13.27 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.846c-.398-.199-2.355-1.162-2.72-1.295-.365-.133-.631-.199-.897.199-.266.398-1.031 1.295-1.264 1.561-.232.266-.465.299-.863.1-.398-.199-1.682-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.175-.811.18-.179.398-.465.598-.698.199-.232.265-.398.398-.664.133-.266.066-.498-.033-.698-.1-.199-.897-2.162-1.229-2.96-.324-.777-.653-.672-.897-.684-.232-.012-.498-.015-.764-.015-.266 0-.698.1-1.063.498-.365.398-1.396 1.364-1.396 3.326s1.43 3.858 1.629 4.124c.199.266 2.814 4.298 6.818 6.028.953.411 1.696.657 2.276.841.956.305 1.826.262 2.514.159.767-.114 2.355-.963 2.688-1.893.332-.93.332-1.728.232-1.893-.099-.166-.365-.265-.763-.465z"/></svg>
+        Send Order via WhatsApp
+      </button>
+      <button class="btn-clear-cart" onclick="clearCart()">Clear cart</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
