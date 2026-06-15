@@ -255,6 +255,16 @@
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer" id="cartFooter" style="display:none">
 
+      <!-- Branch -->
+      <div class="cart-field">
+        <label for="cartBranch">Branch <span class="req">*</span></label>
+        <select id="cartBranch">
+          <option value="">Select a branch…</option>
+          <option value="Angeles">Angeles Branch</option>
+          <option value="Magalang">Magalang Branch</option>
+        </select>
+      </div>
+
       <!-- Delivery / Pickup toggle -->
       <div class="order-type-toggle">
         <button class="type-btn active" id="btnDelivery" onclick="setOrderType('delivery')">🛵 Delivery</button>

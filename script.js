@@ -121,20 +121,16 @@ function setOrderType(type) {
 function sendOrder() {
   if (cart.length === 0) return;
 
+  const branch  = document.getElementById('cartBranch').value;
   const address = document.getElementById('cartAddress').value.trim();
   const time    = document.getElementById('cartTime').value;
   const phone   = document.getElementById('cartPhone').value.trim();
   const note    = document.getElementById('cartNote').value.trim();
 
-  if (orderType === 'delivery' && !address) {
-    shake('cartAddress'); return;
-  }
-  if (orderType === 'pickup' && !time) {
-    shake('cartTime'); return;
-  }
-  if (!phone) {
-    shake('cartPhone'); return;
-  }
+  if (!branch) { shake('cartBranch'); return; }
+  if (orderType === 'delivery' && !address) { shake('cartAddress'); return; }
+  if (orderType === 'pickup'   && !time)    { shake('cartTime');    return; }
+  if (!phone) { shake('cartPhone'); return; }
 
   const lines = cart.map(i => `• ${i.name} x${i.qty} — ₱${(i.price * i.qty).toLocaleString()}`).join('\n');
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
@@ -143,6 +139,7 @@ function sendOrder() {
   msg += orderType === 'delivery'
     ? `\n\n🛵 *Delivery to:* ${address}`
     : `\n\n🏪 *Pickup at:* ${time}`;
+  msg += `\n🏬 *Branch:* ${branch}`;
   msg += `\n📞 *Contact:* ${phone}`;
   if (note) msg += `\n\n📝 Notes: ${note}`;
 

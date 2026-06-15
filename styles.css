@@ -155,11 +155,13 @@ a { text-decoration: none; color: inherit; }
 .cart-field { display: flex; flex-direction: column; gap: 5px; }
 .cart-field label { font-size: 0.78rem; color: var(--muted); }
 .req { color: #e53e3e; }
+.cart-field select,
 .cart-field input[type="text"],
+.cart-field input[type="tel"],
 .cart-field input[type="time"],
 .cart-field textarea { width: 100%; border: 1.5px solid #ddd; border-radius: 8px; padding: 9px 12px; font-size: 0.85rem; font-family: 'Inter', sans-serif; outline: none; transition: border-color .2s; resize: none; }
 .cart-field textarea { height: 62px; }
-.cart-field input:focus, .cart-field textarea:focus { border-color: var(--black); }
+.cart-field select:focus, .cart-field input:focus, .cart-field textarea:focus { border-color: var(--black); }
 .input-error { border-color: #e53e3e !important; animation: shake .3s ease; }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
 
