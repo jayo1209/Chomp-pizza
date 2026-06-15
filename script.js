@@ -28,6 +28,13 @@ function flash(btn) {
   setTimeout(() => btn.classList.remove('added'), 600);
 }
 
+function shake(id) {
+  const el = document.getElementById(id);
+  el.focus();
+  el.classList.add('input-error');
+  setTimeout(() => el.classList.remove('input-error'), 2000);
+}
+
 function pulseFab() {
   const fab = document.getElementById('cartFab');
   fab.classList.remove('pulse');
@@ -116,19 +123,17 @@ function sendOrder() {
 
   const address = document.getElementById('cartAddress').value.trim();
   const time    = document.getElementById('cartTime').value;
+  const phone   = document.getElementById('cartPhone').value.trim();
   const note    = document.getElementById('cartNote').value.trim();
 
   if (orderType === 'delivery' && !address) {
-    document.getElementById('cartAddress').focus();
-    document.getElementById('cartAddress').classList.add('input-error');
-    setTimeout(() => document.getElementById('cartAddress').classList.remove('input-error'), 2000);
-    return;
+    shake('cartAddress'); return;
   }
   if (orderType === 'pickup' && !time) {
-    document.getElementById('cartTime').focus();
-    document.getElementById('cartTime').classList.add('input-error');
-    setTimeout(() => document.getElementById('cartTime').classList.remove('input-error'), 2000);
-    return;
+    shake('cartTime'); return;
+  }
+  if (!phone) {
+    shake('cartPhone'); return;
   }
 
   const lines = cart.map(i => `• ${i.name} x${i.qty} — ₱${(i.price * i.qty).toLocaleString()}`).join('\n');
@@ -138,6 +143,7 @@ function sendOrder() {
   msg += orderType === 'delivery'
     ? `\n\n🛵 *Delivery to:* ${address}`
     : `\n\n🏪 *Pickup at:* ${time}`;
+  msg += `\n📞 *Contact:* ${phone}`;
   if (note) msg += `\n\n📝 Notes: ${note}`;
 
   window.open(`https://wa.me/639626922373?text=${encodeURIComponent(msg)}`, '_blank');
