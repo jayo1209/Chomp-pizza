@@ -50,7 +50,6 @@ function clearCart() {
 
 function renderCart() {
   const itemsEl  = document.getElementById('cartItems');
-  const emptyEl  = document.getElementById('cartEmpty');
   const footerEl = document.getElementById('cartFooter');
   const countEl  = document.getElementById('cartCount');
   const totalEl  = document.getElementById('cartTotal');
@@ -63,17 +62,16 @@ function renderCart() {
   totalEl.textContent = `₱${total.toLocaleString()}`;
 
   if (cart.length === 0) {
-    itemsEl.innerHTML = '';
-    itemsEl.appendChild(emptyEl);
-    emptyEl.style.display = 'flex';
     footerEl.style.display = 'none';
+    itemsEl.innerHTML = `
+      <div class="cart-empty">
+        <span>🛒</span>
+        <p>Your cart is empty.<br/>Add items from the menu!</p>
+      </div>`;
     return;
   }
 
-  emptyEl.style.display = 'none';
   footerEl.style.display = 'flex';
-
-  // Use index-based onclick so item names with apostrophes never break
   itemsEl.innerHTML = cart.map((item, idx) => `
     <div class="cart-item">
       <span class="cart-item-name">${item.name}</span>
