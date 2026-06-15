@@ -100,7 +100,9 @@ a { text-decoration: none; color: inherit; }
 .contact-note strong { color: #ccc; }
 
 /* ── FOOTER ── */
-.footer { background: #0a0a0a; text-align: center; padding: 18px; font-size: 0.78rem; color: #555; }
+.footer { background: #0a0a0a; text-align: center; padding: 18px; font-size: 0.78rem; color: #555; display: flex; flex-direction: column; gap: 6px; }
+.footer-location { color: #888; transition: color .2s; }
+.footer-location:hover { color: var(--yellow); }
 
 /* ── FLOATING CART BUTTON ── */
 .cart-fab { position: fixed; bottom: 24px; right: 24px; z-index: 200; background: var(--yellow); color: var(--black); border: none; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: transform .2s, box-shadow .2s; }
