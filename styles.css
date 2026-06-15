@@ -98,7 +98,7 @@ a { text-decoration: none; color: inherit; }
 .btn-whatsapp:hover { opacity: .9; transform: translateY(-2px); }
 .contact-note { font-size: 0.82rem; color: #777; }
 .contact-note strong { color: #ccc; }
-.contact-fb { color: #ccc; }
+.contact-fb, .contact-fb strong { color: var(--yellow); }
 .contact-fb:hover { color: var(--yellow); }
 
 /* ── FOOTER ── */
