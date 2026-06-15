@@ -254,10 +254,31 @@
     </div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer" id="cartFooter" style="display:none">
-      <div class="cart-note-wrap">
-        <label for="cartNote">Special instructions (optional)</label>
-        <textarea id="cartNote" placeholder="e.g. extra spicy, no onions, delivery to Brgy. San Jose..."></textarea>
+
+      <!-- Delivery / Pickup toggle -->
+      <div class="order-type-toggle">
+        <button class="type-btn active" id="btnDelivery" onclick="setOrderType('delivery')">🛵 Delivery</button>
+        <button class="type-btn" id="btnPickup" onclick="setOrderType('pickup')">🏪 Pickup</button>
       </div>
+
+      <!-- Delivery address (shown when delivery) -->
+      <div class="cart-field" id="fieldAddress">
+        <label for="cartAddress">Delivery address <span class="req">*</span></label>
+        <input type="text" id="cartAddress" placeholder="Street, Barangay, City…" />
+      </div>
+
+      <!-- Pickup time (shown when pickup) -->
+      <div class="cart-field" id="fieldTime" style="display:none">
+        <label for="cartTime">Pickup time <span class="req">*</span></label>
+        <input type="time" id="cartTime" />
+      </div>
+
+      <!-- Notes -->
+      <div class="cart-field">
+        <label for="cartNote">Special instructions (optional)</label>
+        <textarea id="cartNote" placeholder="e.g. extra spicy, no onions…"></textarea>
+      </div>
+
       <div class="cart-total">
         <span>Total</span>
         <span id="cartTotal">₱0</span>

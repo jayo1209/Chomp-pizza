@@ -146,6 +146,23 @@ a { text-decoration: none; color: inherit; }
 .btn-clear-cart { background: none; border: none; color: #aaa; font-size: 0.78rem; cursor: pointer; text-align: center; padding: 2px; font-family: 'Inter', sans-serif; }
 .btn-clear-cart:hover { color: #e53e3e; }
 
+/* order type toggle */
+.order-type-toggle { display: flex; gap: 8px; }
+.type-btn { flex: 1; padding: 9px; border: 1.5px solid #ddd; background: var(--white); border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all .15s; color: var(--muted); }
+.type-btn.active { border-color: var(--black); background: var(--black); color: var(--white); }
+
+/* cart fields */
+.cart-field { display: flex; flex-direction: column; gap: 5px; }
+.cart-field label { font-size: 0.78rem; color: var(--muted); }
+.req { color: #e53e3e; }
+.cart-field input[type="text"],
+.cart-field input[type="time"],
+.cart-field textarea { width: 100%; border: 1.5px solid #ddd; border-radius: 8px; padding: 9px 12px; font-size: 0.85rem; font-family: 'Inter', sans-serif; outline: none; transition: border-color .2s; resize: none; }
+.cart-field textarea { height: 62px; }
+.cart-field input:focus, .cart-field textarea:focus { border-color: var(--black); }
+.input-error { border-color: #e53e3e !important; animation: shake .3s ease; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
 /* ── MOBILE ── */
 @media (max-width: 768px) {
   .hero { flex-direction: column; padding: 40px 20px 48px; text-align: center; gap: 24px; }

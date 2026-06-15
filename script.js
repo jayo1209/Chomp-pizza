@@ -101,14 +101,43 @@ function toggleCart() {
   document.getElementById('cartDrawer').classList.contains('open') ? closeCart() : openCart();
 }
 
+let orderType = 'delivery';
+
+function setOrderType(type) {
+  orderType = type;
+  document.getElementById('btnDelivery').classList.toggle('active', type === 'delivery');
+  document.getElementById('btnPickup').classList.toggle('active', type === 'pickup');
+  document.getElementById('fieldAddress').style.display = type === 'delivery' ? 'flex' : 'none';
+  document.getElementById('fieldTime').style.display    = type === 'pickup'   ? 'flex' : 'none';
+}
+
 function sendOrder() {
   if (cart.length === 0) return;
 
+  const address = document.getElementById('cartAddress').value.trim();
+  const time    = document.getElementById('cartTime').value;
+  const note    = document.getElementById('cartNote').value.trim();
+
+  if (orderType === 'delivery' && !address) {
+    document.getElementById('cartAddress').focus();
+    document.getElementById('cartAddress').classList.add('input-error');
+    setTimeout(() => document.getElementById('cartAddress').classList.remove('input-error'), 2000);
+    return;
+  }
+  if (orderType === 'pickup' && !time) {
+    document.getElementById('cartTime').focus();
+    document.getElementById('cartTime').classList.add('input-error');
+    setTimeout(() => document.getElementById('cartTime').classList.remove('input-error'), 2000);
+    return;
+  }
+
   const lines = cart.map(i => `• ${i.name} x${i.qty} — ₱${(i.price * i.qty).toLocaleString()}`).join('\n');
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const note  = document.getElementById('cartNote').value.trim();
 
   let msg = `Hi Chomp Pizza! 🍕 I'd like to place an order:\n\n${lines}\n\n*TOTAL: ₱${total.toLocaleString()}*`;
+  msg += orderType === 'delivery'
+    ? `\n\n🛵 *Delivery to:* ${address}`
+    : `\n\n🏪 *Pickup at:* ${time}`;
   if (note) msg += `\n\n📝 Notes: ${note}`;
 
   window.open(`https://wa.me/639626922373?text=${encodeURIComponent(msg)}`, '_blank');
