@@ -28,7 +28,7 @@ a { text-decoration: none; color: inherit; }
 .btn-order { background: var(--yellow) !important; color: var(--black) !important; padding: 8px 16px; border-radius: 8px; font-size: 0.82rem !important; }
 
 /* ── HERO ── */
-.hero { background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 64px 40px; min-height: 440px; overflow: hidden; }
+.hero { background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 64px 8%; min-height: 440px; overflow: hidden; }
 .hero-content { max-width: 520px; }
 .hero-tag { display: inline-block; background: rgba(245,197,24,.15); color: var(--yellow); border: 1px solid rgba(245,197,24,.3); padding: 5px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; margin-bottom: 18px; }
 .hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 1.05; letter-spacing: 1px; margin-bottom: 14px; }
