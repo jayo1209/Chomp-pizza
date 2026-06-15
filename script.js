@@ -10,24 +10,12 @@ function addToCart(btn) {
   upsert(name, price);
   flash(btn);
   renderCart();
-  openCart();
+  pulseFab();
 }
 
-function addAddonToCart(btn) {
-  const { name, price } = getItemData(btn);
-  upsert(name, price);
-  flash(btn);
-  renderCart();
-  openCart();
-}
-
-function addListToCart(btn) {
-  const { name, price } = getItemData(btn);
-  upsert(name, price);
-  flash(btn);
-  renderCart();
-  openCart();
-}
+// shared handler for add-ons and list rows
+function addAddonToCart(btn) { addToCart(btn); }
+function addListToCart(btn)  { addToCart(btn); }
 
 function upsert(name, price) {
   const existing = cart.find(i => i.name === name);
@@ -40,9 +28,16 @@ function flash(btn) {
   setTimeout(() => btn.classList.remove('added'), 600);
 }
 
-function changeQty(name, delta) {
-  const idx = cart.findIndex(i => i.name === name);
-  if (idx === -1) return;
+function pulseFab() {
+  const fab = document.getElementById('cartFab');
+  fab.classList.remove('pulse');
+  void fab.offsetWidth; // reflow to restart animation
+  fab.classList.add('pulse');
+}
+
+// Called from qty buttons via data-index, not name strings (avoids apostrophe bugs)
+function changeQty(idx, delta) {
+  if (!cart[idx]) return;
   cart[idx].qty += delta;
   if (cart[idx].qty <= 0) cart.splice(idx, 1);
   renderCart();
@@ -54,11 +49,11 @@ function clearCart() {
 }
 
 function renderCart() {
-  const itemsEl = document.getElementById('cartItems');
-  const emptyEl = document.getElementById('cartEmpty');
+  const itemsEl  = document.getElementById('cartItems');
+  const emptyEl  = document.getElementById('cartEmpty');
   const footerEl = document.getElementById('cartFooter');
-  const countEl = document.getElementById('cartCount');
-  const totalEl = document.getElementById('cartTotal');
+  const countEl  = document.getElementById('cartCount');
+  const totalEl  = document.getElementById('cartTotal');
 
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const count = cart.reduce((s, i) => s + i.qty, 0);
@@ -68,23 +63,24 @@ function renderCart() {
   totalEl.textContent = `₱${total.toLocaleString()}`;
 
   if (cart.length === 0) {
-    emptyEl.style.display = 'flex';
-    footerEl.style.display = 'none';
     itemsEl.innerHTML = '';
     itemsEl.appendChild(emptyEl);
+    emptyEl.style.display = 'flex';
+    footerEl.style.display = 'none';
     return;
   }
 
   emptyEl.style.display = 'none';
   footerEl.style.display = 'flex';
 
-  itemsEl.innerHTML = cart.map(item => `
+  // Use index-based onclick so item names with apostrophes never break
+  itemsEl.innerHTML = cart.map((item, idx) => `
     <div class="cart-item">
       <span class="cart-item-name">${item.name}</span>
       <div class="qty-controls">
-        <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)">−</button>
+        <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
         <span class="qty-num">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
+        <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
       </div>
       <span class="cart-item-price">₱${(item.price * item.qty).toLocaleString()}</span>
     </div>
@@ -104,8 +100,7 @@ function closeCart() {
 }
 
 function toggleCart() {
-  const isOpen = document.getElementById('cartDrawer').classList.contains('open');
-  isOpen ? closeCart() : openCart();
+  document.getElementById('cartDrawer').classList.contains('open') ? closeCart() : openCart();
 }
 
 function sendOrder() {
@@ -113,13 +108,12 @@ function sendOrder() {
 
   const lines = cart.map(i => `• ${i.name} x${i.qty} — ₱${(i.price * i.qty).toLocaleString()}`).join('\n');
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const note = document.getElementById('cartNote').value.trim();
+  const note  = document.getElementById('cartNote').value.trim();
 
   let msg = `Hi Chomp Pizza! 🍕 I'd like to place an order:\n\n${lines}\n\n*TOTAL: ₱${total.toLocaleString()}*`;
   if (note) msg += `\n\n📝 Notes: ${note}`;
 
-  const url = `https://wa.me/639626922373?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
+  window.open(`https://wa.me/639626922373?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 // Card entrance animation
@@ -139,5 +133,4 @@ document.querySelectorAll('.card').forEach((card, i) => {
   observer.observe(card);
 });
 
-// Init count badge
 renderCart();
