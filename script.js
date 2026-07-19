@@ -52,10 +52,17 @@ function changeQty(idx, delta) {
 
 function clearCart() {
   cart.length = 0;
+  sharedLocation = null;
+  const btn = document.getElementById('btnLocation');
+  if (btn) {
+    btn.innerHTML = '📍 Share my exact location <span class="loc-optional">(optional, helps our rider)</span>';
+    btn.classList.remove('located');
+  }
   renderCart();
 }
 
 function renderCart() {
+  resetSendButton();
   const itemsEl  = document.getElementById('cartItems');
   const footerEl = document.getElementById('cartFooter');
   const countEl  = document.getElementById('cartCount');
@@ -108,6 +115,35 @@ function toggleCart() {
   document.getElementById('cartDrawer').classList.contains('open') ? closeCart() : openCart();
 }
 
+let sharedLocation = null;
+
+function shareLocation() {
+  if (!navigator.geolocation) {
+    alert("Sorry, your browser doesn't support location sharing.");
+    return;
+  }
+  const btn = document.getElementById('btnLocation');
+  const original = btn.innerHTML;
+  btn.innerHTML = '📍 Getting your location…';
+  btn.disabled = true;
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      sharedLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      btn.innerHTML = '✅ Exact location captured!';
+      btn.classList.add('located');
+      btn.disabled = false;
+    },
+    () => {
+      sharedLocation = null;
+      btn.innerHTML = original;
+      btn.disabled = false;
+      alert("Couldn't get your location. You can still type your address above.");
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
 let orderType = 'delivery';
 
 function setOrderType(type) {
@@ -116,6 +152,8 @@ function setOrderType(type) {
   document.getElementById('btnPickup').classList.toggle('active', type === 'pickup');
   document.getElementById('fieldAddress').style.display = type === 'delivery' ? 'flex' : 'none';
   document.getElementById('fieldTime').style.display    = type === 'pickup'   ? 'flex' : 'none';
+  document.getElementById('cartFeeRow').style.display   = type === 'delivery' ? 'flex' : 'none';
+  document.getElementById('cartTotalLabel').textContent = type === 'delivery' ? 'Food total' : 'Total';
 }
 
 function sendOrder() {
@@ -136,20 +174,36 @@ function sendOrder() {
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
   let msg = `Hi Chomp Pizza! 🍕 I'd like to place an order:\n\n${lines}\n\nTOTAL: ₱${total.toLocaleString()}`;
+  const mapsLink = sharedLocation
+    ? `https://www.google.com/maps/search/?api=1&query=${sharedLocation.lat},${sharedLocation.lng}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const mapsLabel = sharedLocation ? '📍 Exact location (GPS)' : '📍 Map';
   msg += orderType === 'delivery'
-    ? `\n\n🛵 Delivery to: ${address}`
+    ? `\n\n🛵 Delivery to: ${address}\n${mapsLabel}: ${mapsLink}\n💰 Delivery fee: ₱50 first 2 km + ₱20/km after (please confirm my exact fee)`
     : `\n\n🏪 Pickup at: ${time}`;
   msg += `\n🏬 Branch: ${branch}`;
   msg += `\n📞 Contact: ${phone}`;
   if (note) msg += `\n\n📝 Notes: ${note}`;
 
-  // Messenger can't pre-fill messages, so copy the order and let the customer paste it
+  // Messenger can't pre-fill messages, so copy the order and let the customer paste it.
+  // A real link tap is required for phones to open the Messenger app directly,
+  // so we swap the button for an anchor and let the user tap that.
   navigator.clipboard.writeText(msg).catch(() => {});
-  const btn = document.querySelector('.btn-send-order');
-  const original = btn.innerHTML;
-  btn.innerHTML = '✅ Order copied! Paste it in Messenger…';
-  setTimeout(() => { btn.innerHTML = original; }, 3500);
-  setTimeout(() => window.open('https://m.me/chomppizza', '_blank'), 900);
+  document.querySelector('button.btn-send-order').style.display = 'none';
+  document.getElementById('openMessengerLink').style.display = 'flex';
+  document.getElementById('sendHint').innerHTML =
+    'Your order is copied! 📋 Once Messenger opens, <strong>paste it in the chat</strong> and send.';
+}
+
+function resetSendButton() {
+  const btn = document.querySelector('button.btn-send-order');
+  const link = document.getElementById('openMessengerLink');
+  if (btn && link) {
+    btn.style.display = 'flex';
+    link.style.display = 'none';
+    document.getElementById('sendHint').innerHTML =
+      'Your order will be copied automatically — just <strong>paste it in the Messenger chat</strong> and send! 📋';
+  }
 }
 
 // Card entrance animation

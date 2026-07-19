@@ -153,10 +153,21 @@ a { text-decoration: none; color: inherit; }
 .cart-note-wrap label { font-size: 0.78rem; color: var(--muted); display: block; margin-bottom: 6px; }
 .cart-note-wrap textarea { width: 100%; border: 1px solid #ddd; border-radius: 8px; padding: 10px 12px; font-size: 0.82rem; font-family: 'Nunito', sans-serif; resize: none; height: 72px; outline: none; transition: border-color .2s; }
 .cart-note-wrap textarea:focus { border-color: var(--yellow); }
+.fee-note { font-size: 0.75rem; color: var(--muted); line-height: 1.5; background: var(--cream); border-radius: 8px; padding: 8px 12px; }
+.fee-note strong { color: var(--tomato); }
+
+.btn-location { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--white); border: 1.5px dashed #0084FF; color: #0084FF; font-size: 0.82rem; font-weight: 700; padding: 9px 12px; border-radius: 8px; cursor: pointer; font-family: 'Nunito', sans-serif; transition: background .15s; }
+.btn-location:hover { background: #eaf4ff; }
+.btn-location:disabled { opacity: .7; cursor: default; }
+.btn-location.located { border-style: solid; border-color: #1a9a52; color: #1a9a52; background: #eafaf1; }
+.loc-optional { font-weight: 400; color: var(--muted); }
+.cart-fee { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted); }
 .cart-total { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.05rem; }
 .btn-send-order { display: flex; align-items: center; justify-content: center; gap: 8px; background: #0084FF; color: white; border: none; border-radius: 100px; padding: 15px; font-size: 0.95rem; font-weight: 700; cursor: pointer; width: 100%; transition: opacity .2s, transform .1s; font-family: 'Nunito', sans-serif; }
 .btn-send-order:hover { opacity: .9; }
 .btn-send-order:active { transform: scale(.98); }
+.btn-open-messenger { background: #1a9a52; animation: nudge 1.2s ease infinite; }
+@keyframes nudge { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 .send-hint { font-size: 0.78rem; color: var(--muted); text-align: center; line-height: 1.5; }
 .send-hint strong { color: #0084FF; }
 .btn-clear-cart { background: none; border: none; color: #aaa; font-size: 0.78rem; cursor: pointer; text-align: center; padding: 2px; font-family: 'Nunito', sans-serif; }

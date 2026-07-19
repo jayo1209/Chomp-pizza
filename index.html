@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chomp Pizza — Order Online</title>
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 </head>
@@ -278,6 +278,10 @@
       <div class="cart-field" id="fieldAddress">
         <label for="cartAddress">Delivery address <span class="req">*</span></label>
         <input type="text" id="cartAddress" placeholder="Street, Barangay, City…" />
+        <button type="button" class="btn-location" id="btnLocation" onclick="shareLocation()">
+          📍 Share my exact location <span class="loc-optional">(optional, helps our rider)</span>
+        </button>
+        <p class="fee-note">🛵 Delivery fee: <strong>₱50</strong> for the first 2 km, then <strong>₱20/km</strong> after. We'll confirm the exact fee in chat.</p>
       </div>
 
       <!-- Pickup time (shown when pickup) -->
@@ -299,18 +303,25 @@
       </div>
 
       <div class="cart-total">
-        <span>Total</span>
+        <span id="cartTotalLabel">Food total</span>
         <span id="cartTotal">₱0</span>
+      </div>
+      <div class="cart-fee" id="cartFeeRow">
+        <span>+ Delivery fee</span>
+        <span>from ₱50 · confirmed in chat</span>
       </div>
       <button class="btn-send-order" onclick="sendOrder()">
         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.88 1.42 5.45 3.63 7.14V22l3.33-1.83c.94.26 1.95.4 3.04.4 5.52 0 10-4.14 10-9.25S17.52 2 12 2zm1.06 12.44l-2.56-2.73-4.99 2.73 5.49-5.82 2.62 2.73 4.93-2.73-5.49 5.82z"/></svg>
         Send Order via Messenger
       </button>
-      <p class="send-hint">Your order will be copied automatically — just <strong>paste it in the Messenger chat</strong> and send! 📋</p>
+      <a id="openMessengerLink" class="btn-send-order btn-open-messenger" href="https://m.me/chomppizza" target="_blank" style="display:none">
+        ✅ Order copied! Tap here to open Messenger
+      </a>
+      <p class="send-hint" id="sendHint">Your order will be copied automatically — just <strong>paste it in the Messenger chat</strong> and send! 📋</p>
       <button class="btn-clear-cart" onclick="clearCart()">Clear cart</button>
     </div>
   </div>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
