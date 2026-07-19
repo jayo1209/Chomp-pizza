@@ -135,15 +135,21 @@ function sendOrder() {
   const lines = cart.map(i => `• ${i.name} x${i.qty} — ₱${(i.price * i.qty).toLocaleString()}`).join('\n');
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
-  let msg = `Hi Chomp Pizza! 🍕 I'd like to place an order:\n\n${lines}\n\n*TOTAL: ₱${total.toLocaleString()}*`;
+  let msg = `Hi Chomp Pizza! 🍕 I'd like to place an order:\n\n${lines}\n\nTOTAL: ₱${total.toLocaleString()}`;
   msg += orderType === 'delivery'
-    ? `\n\n🛵 *Delivery to:* ${address}`
-    : `\n\n🏪 *Pickup at:* ${time}`;
-  msg += `\n🏬 *Branch:* ${branch}`;
-  msg += `\n📞 *Contact:* ${phone}`;
+    ? `\n\n🛵 Delivery to: ${address}`
+    : `\n\n🏪 Pickup at: ${time}`;
+  msg += `\n🏬 Branch: ${branch}`;
+  msg += `\n📞 Contact: ${phone}`;
   if (note) msg += `\n\n📝 Notes: ${note}`;
 
-  window.open(`https://wa.me/639626922373?text=${encodeURIComponent(msg)}`, '_blank');
+  // Messenger can't pre-fill messages, so copy the order and let the customer paste it
+  navigator.clipboard.writeText(msg).catch(() => {});
+  const btn = document.querySelector('.btn-send-order');
+  const original = btn.innerHTML;
+  btn.innerHTML = '✅ Order copied! Paste it in Messenger…';
+  setTimeout(() => { btn.innerHTML = original; }, 3500);
+  setTimeout(() => window.open('https://m.me/chomppizza', '_blank'), 900);
 }
 
 // Card entrance animation
