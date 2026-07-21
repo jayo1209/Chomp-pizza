@@ -52,12 +52,6 @@ function changeQty(idx, delta) {
 
 function clearCart() {
   cart.length = 0;
-  sharedLocation = null;
-  const btn = document.getElementById('btnLocation');
-  if (btn) {
-    btn.innerHTML = '📍 Share my exact location <span class="loc-optional">(optional, helps our rider)</span>';
-    btn.classList.remove('located');
-  }
   renderCart();
 }
 
@@ -115,35 +109,6 @@ function toggleCart() {
   document.getElementById('cartDrawer').classList.contains('open') ? closeCart() : openCart();
 }
 
-let sharedLocation = null;
-
-function shareLocation() {
-  if (!navigator.geolocation) {
-    alert("Sorry, your browser doesn't support location sharing.");
-    return;
-  }
-  const btn = document.getElementById('btnLocation');
-  const original = btn.innerHTML;
-  btn.innerHTML = '📍 Getting your location…';
-  btn.disabled = true;
-
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      sharedLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-      btn.innerHTML = '✅ Exact location captured!';
-      btn.classList.add('located');
-      btn.disabled = false;
-    },
-    () => {
-      sharedLocation = null;
-      btn.innerHTML = original;
-      btn.disabled = false;
-      alert("Couldn't get your location. You can still type your address above.");
-    },
-    { enableHighAccuracy: true, timeout: 10000 }
-  );
-}
-
 let orderType = 'delivery';
 
 function setOrderType(type) {
@@ -174,12 +139,9 @@ function sendOrder() {
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
   let msg = `Hi Chomp Pizza! 🍕 I'd like to place an order:\n\n${lines}\n\nTOTAL: ₱${total.toLocaleString()}`;
-  const mapsLink = sharedLocation
-    ? `https://www.google.com/maps/search/?api=1&query=${sharedLocation.lat},${sharedLocation.lng}`
-    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-  const mapsLabel = sharedLocation ? '📍 Exact location (GPS)' : '📍 Map';
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
   msg += orderType === 'delivery'
-    ? `\n\n🛵 Delivery to: ${address}\n${mapsLabel}: ${mapsLink}\n💰 Delivery fee: ₱50 first 2 km + ₱20/km after (please confirm my exact fee)`
+    ? `\n\n🛵 Delivery to: ${address}\n📍 Map: ${mapsLink}\n💰 Delivery fee: ₱50 first 2 km + ₱20/km after (please confirm my exact fee)`
     : `\n\n🏪 Pickup at: ${time}`;
   msg += `\n🏬 Branch: ${branch}`;
   msg += `\n📞 Contact: ${phone}`;
